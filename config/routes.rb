@@ -1,0 +1,13 @@
+Rails.application.routes.draw do
+
+  #for scheduling
+	require 'sidekiq/web'
+	mount Sidekiq::Web => '/sidekiq'
+
+  devise_for :users
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root "welcomes#index"
+  resources :posts  do
+  	resources :comments
+  end
+end

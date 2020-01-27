@@ -1,0 +1,8 @@
+<% @posts.uniq.each do |post| %>
+	<%= post.title %>
+	<%= post.description %>
+	<%= link_to "Show", post_path(post) %>
+	<%= link_to "Destroy", post_path(post), data: {:confirm => 'Are you sure?'}, :method => :delete if current_user.id == post.user_id %>
+	</br>
+<% end %>
+
